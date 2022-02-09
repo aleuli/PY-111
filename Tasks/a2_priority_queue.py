@@ -5,8 +5,9 @@ Queue priorities are from 0 to 10
 """
 from typing import Any
 
-# начало справа конец слева
+
 class PriorityQueue:
+
     def __init__(self):
         self.quenue_priority = []
 
@@ -23,12 +24,14 @@ class PriorityQueue:
         }
         if not self.quenue_priority:
             self.quenue_priority.append(enqueue_item)
+            return None
+
         for index, current_item in enumerate(self.quenue_priority):
-            if current_item["priority"] >= enqueue_item["priority"]:
+            if enqueue_item["priority"] >= current_item["priority"]:
                 self.quenue_priority.insert(index, enqueue_item)
                 break
-            if index == len(self.quenue_priority) - 1:  # Если дошли до конца очереди и не нашли
-                self.quenue_priority.append(enqueue_item)
+        else:
+            self.quenue_priority.append(enqueue_item)
 
     def dequeue(self) -> Any:  # O(1)
         """
@@ -48,7 +51,7 @@ class PriorityQueue:
         :param ind: index of element (count from the beginning)
         :return: peeked element
         """
-        ...
+        return None
 
     def clear(self) -> None:
         """
