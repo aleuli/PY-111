@@ -28,8 +28,7 @@ class Stack:
         """
         if not self.stack:
             return None
-        self.stack.pop()
-        return None
+        return self.stack.pop()
 
     def peek(self, ind: int = 0) -> Any:
         """
