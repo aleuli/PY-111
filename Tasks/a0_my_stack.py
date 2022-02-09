@@ -46,6 +46,7 @@ class Stack:
         #         return i
         #     count += 1
         ...  # когда нельзя достать элемент
+
         reversed_index = reversed(self.stack)
         reversed_index = -ind - 1
         return self.stack[reversed_index]
