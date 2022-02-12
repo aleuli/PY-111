@@ -29,7 +29,6 @@ class Queue:
         value = self.queue[0]
         del self.queue[0]
         return value
-        # return self.queue.pop(0)
 
     def peek(self, ind: int = 0) -> Any:  # O(N)
         """
@@ -38,9 +37,8 @@ class Queue:
         :param ind: index of element (count from the beginning)
         :return: peeked element
         """
-        # reversed_index = reversed(self.queue)
-        # reversed_index = -ind - 1
-        # return reversed_index
+        if ind > len(self.queue):
+            return None
         return self.queue[ind]
 
     def clear(self) -> None:  # O(1)
