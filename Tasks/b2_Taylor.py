@@ -2,6 +2,15 @@
 Taylor series
 """
 from typing import Union
+import math
+from itertools import count
+
+
+EPSILON = 0.0001
+
+
+def get_item(x, n):
+    return x ** n / math.factorial(n)
 
 
 def ex(x: Union[int, float]) -> float:
@@ -11,8 +20,17 @@ def ex(x: Union[int, float]) -> float:
     :param x: x value
     :return: e^x value
     """
-    print(x)
-    return 0
+    summ = 1
+    for n in count(1, 1):
+        current_item = get_item(x, n)
+        summ += current_item
+        if current_item <= EPSILON:
+            break
+    return summ
+
+
+def get_item_sin(x, n):
+    return ((-1) ** (n-1) * x ** (2 * n - 1)) / math.factorial(2 * n - 1)
 
 
 def sinx(x: Union[int, float]) -> float:
@@ -22,5 +40,9 @@ def sinx(x: Union[int, float]) -> float:
     :param x: x value
     :return: sin(x) value
     """
-    print(x)
-    return 0
+    summ = 0
+    for n in count(1, 1):
+        current_item = get_item_sin(x, n)
+        summ += current_item
+        if abs(current_item) <= EPSILON:
+            return summ
