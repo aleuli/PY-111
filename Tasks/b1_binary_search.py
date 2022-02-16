@@ -25,34 +25,3 @@ def binary_search(elem: int, arr: Sequence) -> Optional[int]:
             right_border = middle_index - 1
 
     return None
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#     arrow = sorted(arr)
-#     for index, value in enumerate(arrow):
-#         if elem == value:
-#             return index
-#         else:
-#             return None
-#
-#
-# if __name__ == '__main__':
-#     binary_search(2, [1, 2, 3])
-
