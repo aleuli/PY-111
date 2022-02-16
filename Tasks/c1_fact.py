@@ -1,5 +1,3 @@
-import math
-
 def factorial_recursive(n: int) -> int:
     """
     Calculate factorial of number n (> 0) in recursive way
