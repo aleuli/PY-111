@@ -8,7 +8,23 @@ def stairway_path(stairway: Sequence[Union[float, int]]) -> Union[float, int]:
     :param stairway: list of ints, where each int is a cost of appropriate step
     :return: minimal cost of getting to the top
     """
-    return reverse_stairway_path(stairway)
+
+    def lazy_stair_way_path(stair_number: int) -> Union[int, float]:
+        """Принимаем номер ступени.Возвращаем ступень до нее."""
+
+        if stair_number == 0:
+            return stairway[stair_number]
+        if stair_number == 1:
+            return stairway[stair_number]
+
+        current_cost = stairway[stair_number]
+        return current_cost + min(lazy_stair_way_path(stair_number - 1),
+                                  lazy_stair_way_path(stair_number - 2))
+
+    return lazy_stair_way_path(len(stairway) - 1)
+
+
+    # return reverse_stairway_path(stairway)
 
 def direct_stairway_path(stairway: Sequence[Union[float, int]]) -> Union[float, int]:
     count_stars = len(stairway)
