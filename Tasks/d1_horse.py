@@ -1,3 +1,6 @@
+from functools import lru_cache
+
+
 def calculate_paths(shape: (int, int), point: (int, int)) -> int:
     """
     Given field with size rows*cols count available paths from (0, 0) to point
@@ -9,6 +12,7 @@ def calculate_paths(shape: (int, int), point: (int, int)) -> int:
     rows = shape[0]  # кол-во строк отсчет с 1
     cols = shape[1]  # кол-во столбцов отсчет с 1
 
+    @lru_cache()
     def get_steps(i, j):
         if i == 0 and j == 0:  # левый верхний угол
             return 1
@@ -23,8 +27,6 @@ def calculate_paths(shape: (int, int), point: (int, int)) -> int:
 
     return get_steps(i=point[0], j=point[1])
 
-
-# для оптимизации применить lru_cache
 
 if __name__ == '__main__':
     assert 13309 == calculate_paths((7, 15), (6, 14))
